@@ -1,4 +1,5 @@
 package uber;
+import java.util.ArrayList;
 
 public class Historial {
     private ArrayList<Viaje> viajes;
@@ -11,7 +12,7 @@ public class Historial {
         return viajes;
     }
 
-    public void Viaje getViaje(int index) {
+    public void getViaje(int index) {
         this.viajes.get(index);
     }
 

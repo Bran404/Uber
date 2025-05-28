@@ -1,21 +1,21 @@
 package uber;
 
 public class Pago {
-    private MetodoDePago metodoDePago;
+    private MetodoPago metodoDePago;
     private EstadoPago estadoPago;
     private float monto;
 
-    public Pago(MetodoDePago metodoDePago, float monto) {
+    public Pago(MetodoPago metodoDePago, float monto) {
         this.metodoDePago = metodoDePago;
         this.estadoPago = EstadoPago.PENDIENTE;
         this.monto = monto;
     }
 
-    public MetodoDePago getMetodoDePago() {
+    public MetodoPago getMetodoDePago() {
         return metodoDePago;
     }
 
-    public void setMetodoDePago(MetodoDePago metodoDePago) {
+    public void setMetodoDePago(MetodoPago metodoDePago) {
         this.metodoDePago = metodoDePago;
     }
 

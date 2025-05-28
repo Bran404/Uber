@@ -1,18 +1,19 @@
 package uber;
+import java.util.ArrayList;
 
 public class Viaje {
     private ArrayList<Pasajero> pasajeros;
     private Chofer chofer;
-    private TipoDeViaje tipoDeViaje;
+    private EnumViaje tipoDeViaje;
     private Pago pago;
     private float calificacion;
 
-    public Viaje(ArrayList<Pasajero> pasajeros, Chofer chofer, TipoDeViaje tipoDeViaje, MetodoDePago metodoDePago) {
+    public Viaje(ArrayList<Pasajero> pasajeros, Chofer chofer, EnumViaje tipoDeViaje, MetodoPago metodoDePago) {
         this.pasajeros = pasajeros;
         this.chofer = chofer;
         this.tipoDeViaje = tipoDeViaje;
-        this.pago = setPago(MetodoDePago);
-        this.calificacion = 0.0;
+        this.pago = setPago();
+        this.calificacion = (float) 0.0;
     }
 
     
@@ -40,11 +41,11 @@ public class Viaje {
         this.chofer = chofer;
     }
 
-    public TipoDeViaje getTipoDeViaje() {
+    public EnumViaje getTipoDeViaje() {
         return tipoDeViaje;
     }
 
-    public void setTipoDeViaje(TipoDeViaje tipoDeViaje) {
+    public void setTipoDeViaje(EnumViaje tipoDeViaje) {
         this.tipoDeViaje = tipoDeViaje;
     }
 
@@ -52,11 +53,12 @@ public class Viaje {
         return pago;
     }
 
-    private void setPago() {
+    private Pago setPago() {
         // TODO: implement correctly the definition of the payment
-        metodo = getPasajero(0).getMetodoDePago();
-        monto = 0.0;
+        MetodoPago metodo = getPasajero(0).getMetodoDePago();
+        float monto = (float) 0.0;
         this.pago = new Pago(metodo, monto);
+        return this.pago;
     }
 
     public float getCalificacion() {
