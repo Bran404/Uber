@@ -4,10 +4,10 @@ public class ZonaDeTrabajo {
     private final String CODIGO;
 
     public ZonaDeTrabajo(String codigo) {
-        this.codigo = codigo;
+        this.CODIGO = codigo;
     }
 
     public String getCodigo() {
-        return codigo;
+        return CODIGO;
     }
 }

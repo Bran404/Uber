@@ -1,20 +1,21 @@
 package uber;
+import java.util.ArrayList;
 
 public class Pasajero {
     private String nombre;
     private ArrayList<Direccion> direcciones;
-    private MetodoDePago metodoDePago;
+    private MetodoPago metodoDePago;
 
-    public Pasajero(String nombre, MetodoDePago metodoDePago) {
+    public Pasajero(String nombre, MetodoPago metodoPago) {
         this.nombre = nombre;
         this.direcciones = new ArrayList<Direccion>();
-        this.metodoDePago = metodoDePago;
+        this.metodoDePago = metodoPago;
     }
 
     public Pasajero(String nombre) {
         this.nombre = nombre;
         this.direcciones = new ArrayList<Direccion>();
-        this.metodoDePago = MetodoDePago.EFECTIVO;
+        this.metodoDePago = MetodoPago.EFECTIVO;
     }
 
     public String getNombre() {
@@ -41,11 +42,11 @@ public class Pasajero {
         this.nombre = nombre;
     }
 
-    public MetodoDePago getMetodoDePago() {
+    public MetodoPago getMetodoDePago() {
         return metodoDePago;
     }
 
-    public void setMetodoDePago(MetodoDePago metodoDePago) {
+    public void setMetodoDePago(MetodoPago metodoDePago) {
         this.metodoDePago = metodoDePago;
     }
 }
