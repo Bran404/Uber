@@ -49,4 +49,18 @@ public class Pasajero {
     public void setMetodoDePago(MetodoPago metodoDePago) {
         this.metodoDePago = metodoDePago;
     }
+
+    /**
+     * Static method that Returns an ArrayList of Pasajero given n number of Pasajero's instances.
+     * 
+     * @param pasajeros variable number of Pasajeros
+     * @return ArrayList of Pasajero
+     */
+    public static ArrayList<Pasajero> getArrayPasajeros(Pasajero... pasajeros) {
+        ArrayList<Pasajero> arrayPasajeros = new ArrayList<Pasajero>();
+        for (int i = 0; i < pasajeros.length; i++) {
+            arrayPasajeros.add(pasajeros[i]);
+        }
+        return arrayPasajeros;
+    }
 }
