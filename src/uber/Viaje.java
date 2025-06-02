@@ -13,7 +13,7 @@ public class Viaje {
     public Viaje(ArrayList<Pasajero> pasajeros, Chofer chofer, EnumViaje tipoDeViaje) {
         this.pasajeros = pasajeros;
         this.chofer = chofer;
-        this.chofer.historial.addViaje(this);
+        this.chofer.getHistorial().addViaje(this);
         this.tipoDeViaje = tipoDeViaje;
         this.pago = this.setPago();
         this.calificacion = (float) 0.0;
@@ -55,7 +55,7 @@ public class Viaje {
     public void setChofer(Chofer chofer) {
         if (this.chofer == null){
             this.chofer = chofer;
-            this.chofer.historial.addViaje(this);
+            this.chofer.getHistorial().addViaje(this);
         } else {
             System.out.println("El viaje ya tiene un chofer, y no se puede cambiar una vez definido.");
         }
@@ -105,8 +105,8 @@ public class Viaje {
             this.estadoViaje = EstadoViaje.CANCELADO_SISTEMA;
         }
         this.mensajeEstado = generateMessage();
-        this.pago.setEstadoPago(EstadoPago.CANCELADO);
-        this.calificacion = null;   // Deberíamos hacer la calificación inválida si el viaje fue cancelado?
+        this.pago.setEstadoPago(EstadoPago.DENEGADO);
+//        this.calificacion = null;   // Deberíamos hacer la calificación inválida si el viaje fue cancelado?
     }
     
     /**
@@ -128,7 +128,7 @@ public class Viaje {
             this.estadoViaje = EstadoViaje.CANCELADO_SISTEMA;
         }
         this.mensajeEstado = generateMessage() + " " + motivo;
-        this.pago.setEstadoPago(EstadoPago.CANCELADO);
+        this.pago.setEstadoPago(EstadoPago.DENEGADO);
     }
 
     public String seguimientoViaje() {
@@ -139,7 +139,7 @@ public class Viaje {
         return this.mensajeEstado;
     }
 
-    private void generateMessage() {
+    private String generateMessage() {
         String msg = "";
 
         msg += "Viaje de tipo " + this.tipoDeViaje + ". ";
@@ -159,24 +159,24 @@ public class Viaje {
             msg += "Chofer: " + this.chofer.getNombre() + ". ";
         }
 
-        if this.estadoViaje.equals(EstadoViaje.SIN_ASIGNAR) {
+        if (this.estadoViaje.equals(EstadoViaje.SIN_ASIGNAR)) {
             msg += "Viaje sin asignar. ";
-        } else if this.estadoViaje.equals(EstadoViaje.PENDIENTE_ACEPTAR_CHOFER) {
+        } else if (this.estadoViaje.equals(EstadoViaje.PENDIENTE_ACEPTAR_CHOFER)) {
             msg += "Viaje pendiente de aceptar por chofer. ";
-        } else if this.estadoViaje.equals(EstadoViaje.ACEPTADO) {
+        } else if (this.estadoViaje.equals(EstadoViaje.ACEPTADO)) {
             msg += "Viaje aceptado. ";
-        } else if this.estadoViaje.equals(EstadoViaje.EN_CURSO) {
+        } else if (this.estadoViaje.equals(EstadoViaje.EN_CURSO)) {
             msg += "Viaje en curso. ";
-        } else if this.estadoViaje.equals(EstadoViaje.FINALIZADO) {
+        } else if (this.estadoViaje.equals(EstadoViaje.FINALIZADO)) {
             msg += "Viaje finalizado. ";
-        } else if this.estadoViaje.equals(EstadoViaje.CANCELADO_PASAJERO) {
+        } else if (this.estadoViaje.equals(EstadoViaje.CANCELADO_PASAJERO)) {
             msg += "Viaje cancelado por pasajero. ";
-        } else if this.estadoViaje.equals(EstadoViaje.CANCELADO_CHOFER) {
+        } else if (this.estadoViaje.equals(EstadoViaje.CANCELADO_CHOFER)) {
             msg += "Viaje cancelado por chofer. ";
-        } else if this.estadoViaje.equals(EstadoViaje.CANCELADO_SISTEMA) {
+        } else if (this.estadoViaje.equals(EstadoViaje.CANCELADO_SISTEMA)) {
             msg += "Viaje cancelado por el sistema. ";
         }
 
-        this.mensajeEstado = msg;
+        return msg;
     }
 }
