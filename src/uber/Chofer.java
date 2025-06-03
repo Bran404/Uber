@@ -8,14 +8,17 @@ public class Chofer {
     private boolean available;
     private ArrayList<ZonaDeTrabajo> zonasDeTrabajo;
     private Historial historial;
+    private static String nextID = "0001";
 
-    public Chofer(String ID_CHOFER, String nombre) {
-        // FIXME: ID should be auto-generated
-        this.ID_CHOFER = ID_CHOFER;
+    public Chofer(String nombre, Auto firstAuto, ZonaDeTrabajo firstZonaDeTrabajo) {
+        this.ID_CHOFER = nextID;
+        nextID = String.format("%04x", Integer.parseInt(nextID, 16) + 1);
         this.autos = new ArrayList<Auto>();
+        this.autos.add(firstAuto);
         this.nombre = nombre;
         this.available = false;
         this.zonasDeTrabajo = new ArrayList<ZonaDeTrabajo>();
+        this.zonasDeTrabajo.add(firstZonaDeTrabajo);
         this.historial = new Historial();
     }
 
